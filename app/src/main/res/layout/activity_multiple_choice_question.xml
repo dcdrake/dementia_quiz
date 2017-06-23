@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_multiple_choice_question"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:orientation="vertical"
+    tools:context="com.indy.dcdrake.dementiaquiz.MultipleChoiceQuestionActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Score"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="30dp"
+        android:padding="8dp"
+        android:text="Which thing is alive?"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/choice1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0091EA"
+        android:textColor="#fff"
+        android:padding="6dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="answerButtonClicked"
+        android:text="Bird" />
+
+    <Button
+        android:id="@+id/choice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0091EA"
+        android:textColor="#fff"
+        android:padding="6dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="answerButtonClicked"
+        android:text="Door" />
+
+    <Button
+        android:id="@+id/choice3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0091EA"
+        android:textColor="#fff"
+        android:padding="6dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="answerButtonClicked"
+        android:text="Rock" />
+
+    <Button
+        android:id="@+id/choice4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0091EA"
+        android:textColor="#fff"
+        android:padding="6dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="answerButtonClicked"
+        android:text="Paper" />
+
+    <Button
+        android:id="@+id/choice5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0091EA"
+        android:textColor="#fff"
+        android:padding="6dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="answerButtonClicked"
+        android:text="Balls" />
+
+    <Button
+        android:id="@+id/next_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E100FF"
+        android:textColor="#fff"
+        android:layout_marginBottom="12dp"
+        android:onClick="answerButtonClicked"
+        android:text="Next Question" />
+
+</LinearLayout>

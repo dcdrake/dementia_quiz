@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DementiaQuiz</string>
+    <string name="title_activity_basic_question">BasicQuestion</string>
+</resources>
