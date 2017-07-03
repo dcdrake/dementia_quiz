@@ -29,7 +29,7 @@ public class MultipleChoiceQuestionActivity extends AppCompatActivity {
         current_question_number = active_question;
 
 
-        current_question = question_manager.getQuestionByIndex(current_question_number);
+        current_question = question_manager.getNextMultipleChoiceQuestion();
 
         TextView question_text = (TextView) findViewById(question);
         Button button1 = (Button)findViewById(R.id.choice1);

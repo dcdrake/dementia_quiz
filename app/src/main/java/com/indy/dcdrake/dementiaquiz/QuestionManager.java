@@ -12,8 +12,8 @@ public class QuestionManager implements Serializable
     private ArrayList<MultipleChoiceQuestion> multiple_choice_questions = new ArrayList<>();
     private ArrayList<TrueFalseQuestion>      true_false_questions = new ArrayList<>();
 
-    private int next_true_false_question_number;
-    private int next_multiple_choice_question_number;
+    private int next_true_false_question_number = 0;
+    private int next_multiple_choice_question_number = 0;
 
     QuestionManager()
     {
@@ -77,6 +77,15 @@ public class QuestionManager implements Serializable
         q6.addAnswerChoice("identifies all of the five objects or identifies only false objects", 1);
         q6.addAnswerChoice("no response", 0);
         multiple_choice_questions.add(q6);
+
+        TrueFalseQuestion q11 =
+                new TrueFalseQuestion("Point to four pieces of clothing or accessories that you (or the person) are wearing. Ask: 'What do you call this?'", 4);
+        q11.addPartOfQuestion("Point at (an article of clothing/accessory), asking 'What do you call this?'");
+        q11.addPartOfQuestion("Point at (an article of clothing/accessory), asking 'What do you call this?'");
+        q11.addPartOfQuestion("Point at (an article of clothing/accessory), asking 'What do you call this?'");
+        q11.addPartOfQuestion("Point at (an article of clothing/accessory), asking 'What do you call this?'");
+        true_false_questions.add(q11);
+
     }
 
     public MultipleChoiceQuestion getQuestionByIndex(int index)
@@ -86,6 +95,17 @@ public class QuestionManager implements Serializable
 
     public MultipleChoiceQuestion getNextMultipleChoiceQuestion()
     {
-        return multiple_choice_questions.get(next_multiple_choice_question_number);
+        int question_number = next_multiple_choice_question_number;
+        next_multiple_choice_question_number++;
+
+        return multiple_choice_questions.get(question_number);
+    }
+
+    public TrueFalseQuestion getNextTrueFalseQuestion()
+    {
+        int question_number = next_true_false_question_number;
+        next_true_false_question_number++;
+
+        return true_false_questions.get(question_number);
     }
 }

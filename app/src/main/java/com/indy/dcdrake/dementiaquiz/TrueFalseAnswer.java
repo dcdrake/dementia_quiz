@@ -1,10 +1,12 @@
 package com.indy.dcdrake.dementiaquiz;
 
+import java.io.Serializable;
+
 /**
  * Created by dcdrake on 7/2/17.
  */
 
-public class TrueFalseAnswer extends Answer
+public class TrueFalseAnswer implements Serializable
 {
     public enum SelectedState
     {
@@ -15,13 +17,12 @@ public class TrueFalseAnswer extends Answer
     }
 
     SelectedState state;
-//    int point_value;
+    String text;
 
     TrueFalseAnswer(String answer_text_in)
     {
-        super(answer_text_in);
-
         state = SelectedState.UNSELECTED;
+        text = answer_text_in;
     }
 
     public SelectedState getCurrentState()
