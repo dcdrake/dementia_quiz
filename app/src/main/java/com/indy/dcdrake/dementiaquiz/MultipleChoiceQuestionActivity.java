@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.indy.dcdrake.dementiaquiz.R.id.next_question;
 import static com.indy.dcdrake.dementiaquiz.R.id.question;
 
 public class MultipleChoiceQuestionActivity extends AppCompatActivity {
 
-    private QuestionManager question_manager = new QuestionManager();
+    private QuestionManager question_manager;
     int current_question_number;
+    MultipleChoiceQuestion current_question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,12 @@ public class MultipleChoiceQuestionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int active_question = intent.getIntExtra("active_question_number", 0);
+        question_manager = (QuestionManager) intent.getSerializableExtra("question_manager");
+
         current_question_number = active_question;
 
-        MultipleChoiceQuestion new_question =
-                question_manager.getQuestionByIndex(current_question_number);
+
+        current_question = question_manager.getQuestionByIndex(current_question_number);
 
         TextView question_text = (TextView) findViewById(question);
         Button button1 = (Button)findViewById(R.id.choice1);
@@ -34,12 +38,12 @@ public class MultipleChoiceQuestionActivity extends AppCompatActivity {
         Button button4 = (Button)findViewById(R.id.choice4);
         Button button5 = (Button)findViewById(R.id.choice5);
 
-        question_text.setText(new_question.getQuestionText());
-        button1.setText(new_question.getAnswerByIndex(0).getAnswerText());
-        button2.setText(new_question.getAnswerByIndex(1).getAnswerText());
-        button3.setText(new_question.getAnswerByIndex(2).getAnswerText());
-        button4.setText(new_question.getAnswerByIndex(3).getAnswerText());
-        button5.setText(new_question.getAnswerByIndex(4).getAnswerText());
+        question_text.setText(current_question.getQuestionText());
+        button1.setText(current_question.getAnswerByIndex(0).getAnswerText());
+        button2.setText(current_question.getAnswerByIndex(1).getAnswerText());
+        button3.setText(current_question.getAnswerByIndex(2).getAnswerText());
+        button4.setText(current_question.getAnswerByIndex(3).getAnswerText());
+        button5.setText(current_question.getAnswerByIndex(4).getAnswerText());
     }
 
     public void answerButtonClicked(View v)
@@ -51,6 +55,7 @@ public class MultipleChoiceQuestionActivity extends AppCompatActivity {
         new_question.getAnswerByIndex(2).setSelected(false);
         new_question.getAnswerByIndex(3).setSelected(false);
         new_question.getAnswerByIndex(4).setSelected(false);
+
 
         Button button;
         button = (Button)findViewById(R.id.choice1);
@@ -95,7 +100,7 @@ public class MultipleChoiceQuestionActivity extends AppCompatActivity {
                 button.setBackgroundColor(Color.RED);
                 new_question.getAnswerByIndex(4).setSelected(true);
                 break;
-            case R.id.next_question:
+            case next_question:
                 goToNextQuestion();
             default:
                 break;
@@ -104,37 +109,48 @@ public class MultipleChoiceQuestionActivity extends AppCompatActivity {
 
     public void goToNextQuestion()
     {
-        Button button;
-        button = (Button)findViewById(R.id.choice1);
-        button.setBackgroundColor(0xFF0091EA);
+        if (current_question.getNextQuestionIsTrueFalse())
+        {
+            Intent intent = new Intent(this, TrueFalseQuestionActivity.class);
+//            intent.putExtra("active_question_number", next_question_number);
+            intent.putExtra("question_manager", question_manager);
 
-        button = (Button)findViewById(R.id.choice2);
-        button.setBackgroundColor(0xFF0091EA);
+            startActivity(intent);
+        }
+        else
+        {
+            Button button;
+            button = (Button) findViewById(R.id.choice1);
+            button.setBackgroundColor(0xFF0091EA);
 
-        button = (Button)findViewById(R.id.choice3);
-        button.setBackgroundColor(0xFF0091EA);
+            button = (Button) findViewById(R.id.choice2);
+            button.setBackgroundColor(0xFF0091EA);
 
-        button = (Button)findViewById(R.id.choice4);
-        button.setBackgroundColor(0xFF0091EA);
+            button = (Button) findViewById(R.id.choice3);
+            button.setBackgroundColor(0xFF0091EA);
 
-        button = (Button)findViewById(R.id.choice5);
-        button.setBackgroundColor(0xFF0091EA);
+            button = (Button) findViewById(R.id.choice4);
+            button.setBackgroundColor(0xFF0091EA);
 
-        TextView question_text = (TextView) findViewById(question);
-        Button button1 = (Button)findViewById(R.id.choice1);
-        Button button2 = (Button)findViewById(R.id.choice2);
-        Button button3 = (Button)findViewById(R.id.choice3);
-        Button button4 = (Button)findViewById(R.id.choice4);
-        Button button5 = (Button)findViewById(R.id.choice5);
+            button = (Button) findViewById(R.id.choice5);
+            button.setBackgroundColor(0xFF0091EA);
 
-        current_question_number += 1;
-        MultipleChoiceQuestion next_question = question_manager.getQuestionByIndex(current_question_number);
+            TextView question_text = (TextView) findViewById(question);
+            Button button1 = (Button) findViewById(R.id.choice1);
+            Button button2 = (Button) findViewById(R.id.choice2);
+            Button button3 = (Button) findViewById(R.id.choice3);
+            Button button4 = (Button) findViewById(R.id.choice4);
+            Button button5 = (Button) findViewById(R.id.choice5);
 
-        question_text.setText(next_question.getQuestionText());
-        button1.setText(next_question.getAnswerByIndex(0).getAnswerText());
-        button2.setText(next_question.getAnswerByIndex(1).getAnswerText());
-        button3.setText(next_question.getAnswerByIndex(2).getAnswerText());
-        button4.setText(next_question.getAnswerByIndex(3).getAnswerText());
-        button5.setText(next_question.getAnswerByIndex(4).getAnswerText());
+            current_question_number += 1;
+            current_question = question_manager.getQuestionByIndex(current_question_number);
+
+            question_text.setText(current_question.getQuestionText());
+            button1.setText(current_question.getAnswerByIndex(0).getAnswerText());
+            button2.setText(current_question.getAnswerByIndex(1).getAnswerText());
+            button3.setText(current_question.getAnswerByIndex(2).getAnswerText());
+            button4.setText(current_question.getAnswerByIndex(3).getAnswerText());
+            button5.setText(current_question.getAnswerByIndex(4).getAnswerText());
+        }
     }
 }

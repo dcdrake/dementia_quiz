@@ -10,40 +10,18 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:orientation="vertical"
-    tools:context="com.indy.dcdrake.dementiaquiz.MultipleChoiceQuestionActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Score"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="0"
-            android:textSize="20sp" />
-
-    </RelativeLayout>
+    tools:context="com.indy.dcdrake.dementiaquiz.MultipleChoiceQuestionActivity"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="30dp"
+        android:layout_weight="0.37"
         android:padding="8dp"
         android:text="Which thing is alive?"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/choice1"
