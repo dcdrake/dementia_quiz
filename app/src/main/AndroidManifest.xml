@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MultipleChoiceQuestionActivity" />
-        <activity android:name=".TrueFalseQuestionActivity"></activity>
+        <activity android:name=".TrueFalseQuestionActivity" />
     </application>
 
 </manifest>

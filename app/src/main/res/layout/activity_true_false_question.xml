@@ -24,4 +24,14 @@
         android:textAlignment="center"
         android:textSize="16sp" />
 
+    <Button
+        android:id="@+id/next_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E100FF"
+        android:textColor="#fff"
+        android:layout_marginBottom="12dp"
+        android:onClick="answerButtonClicked"
+        android:text="Next Question" />
+
 </LinearLayout>
